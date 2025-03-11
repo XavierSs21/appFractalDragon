@@ -12,3 +12,21 @@ Dialog::~Dialog()
 {
     delete ui;
 }
+
+void Dialog::on_pushBtnSalir_clicked() {
+
+}
+
+void Dialog::paintEvent(QPaintEvent *event) {
+
+    Q_UNUSED(event);
+    dragon();
+}
+
+void Dialog::dragon() {  // representar a main
+
+}
+
+void Dialog::generarDragon(QPainter *canvas) {
+
+}
