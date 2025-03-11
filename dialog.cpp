@@ -19,7 +19,7 @@ void Dialog::on_pushBtnSalir_clicked() {
 
 void Dialog::paintEvent(QPaintEvent *event) {
 
-    Q_UNUSED(event);
+    Q_UNUSED(event); // Evitar conflictos con el compilador
     dragon();
 }
 
