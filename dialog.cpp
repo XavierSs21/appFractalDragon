@@ -30,7 +30,7 @@ void Dialog::dragon() {  // representar a main
     // declarar e inicializar varaibles
     // int i;
     paso = 4096;
-    signo = - 1;
+    signo = 1; //-1;
 
     ejeX[1] = canvas.window().width() / 4;
     ejeX[4097] = 3 * canvas.window().width() / 4;
@@ -39,22 +39,30 @@ void Dialog::dragon() {  // representar a main
     ejeY[1]  = ejeY[4097] = 2 * canvas.window().height() / 3;
 
     // agregar color al dibujo por realizar
-    canvas.setPen(QColor(75,0,169));
+    canvas.setPen(QColor(QRandomGenerator::global()->bounded(50) + 200, QRandomGenerator::global()->bounded(101) + 155, 0));
+
+    // -> Usar el generador de numeros aleatorios en QT
 
     QFont fuente = canvas.font();
     fuente.setPointSize(fuente.pointSize() * 2); // -> agrgar un size a la letra
     canvas.setFont(QFont("Ebrima", 22));
 
     // "titulo"
-    canvas.drawText(this->width() / 4, 75, "Curva de fractal del Dragon");
+    canvas.drawText(this->width() / 8, 75, "Curva de fractal del Dragon");
 
     // dibujar una linea
     canvas.setPen(QColor(255,255,255));
     canvas.drawLine(ejeX[1], ejeY[1], ejeX[4097], ejeY[4097]);
 
-    for(int i = 1; i <= 10; i++){
+    // obtener los valores de los ejes
+    std::cout << "ejeX[1]: " << ejeX[1]<< std::endl;
+    std::cout << "ejeY[1]: " << ejeY[1]<< std::endl;
+    std::cout << "ejeX[4097]: " << ejeX[4097]<< std::endl;
+    std::cout << "ejeY[4097]: " << ejeY[4097]<< std::endl;
 
-        canvas.setPen(QColor(129, 5, 48)); // se va cambiar a un random generator
+    for(int i = 1; i <= 11; i++){
+
+        canvas.setPen(QColor(0, QRandomGenerator::global()->bounded(101) + 155, 0)); // se va cambiar a un random generator
         generarDragon(&canvas);
 
         paso /= 2;
@@ -68,7 +76,7 @@ void Dialog::generarDragon(QPainter *canvas) {
 
     j = paso / 2;
 
-    canvas->setPen(QColor(50, 50, 200));
+    // canvas->setPen(QColor(50,50,200));
 
     for(i = 1; i <= 4096; i+= paso){
         dx = ejeX[paso + i] - ejeX[i];

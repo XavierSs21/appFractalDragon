@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QPainter>
+#include <QRandomGenerator>
+#include <iostream>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
