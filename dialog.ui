@@ -26,6 +26,32 @@
     <string>Salir</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushBtnIniciar">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>460</y>
+     <width>83</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Iniciar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushBtnDetener">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>460</y>
+     <width>83</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Detener</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
