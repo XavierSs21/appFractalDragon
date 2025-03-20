@@ -1,2 +1,17 @@
 build/
-AppFractalDragon.pro.user
+*.pro.user
+
+# Ignorar archivos de compilación y binarios
+*.o
+*.exe
+*.dll
+*.a
+*.so
+*.dylib
+moc_*
+qrc_*
+ui_*
+
+# Ignorar carpetas de compilación
+debug/
+release/
