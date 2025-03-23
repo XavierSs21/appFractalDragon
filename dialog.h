@@ -4,13 +4,11 @@
 #include <QDialog>
 #include <QPainter>
 #include <QRandomGenerator>
-#include <iostream>
-#include "graficos.h"
 
 #include <QTimer>
 #include <QKeyEvent>
 
-#include "graficos.h"
+#include "dragon.h"
 #include "henon.h"
 
 QT_BEGIN_NAMESPACE
@@ -36,27 +34,16 @@ private slots:
 
 private:
     Ui::Dialog *ui;
-   // =============== Dragon =============== //
-
-    int ejeX [4098];
-    int ejeY [4098];
-
-    int paso, signo;
 
     void paintEvent(QPaintEvent *event) override;  // sobreescribir
 
-    void dragon(); // representa a main en consola
+    // =============== Dragon =============== //
 
-    // Sobrecarga del metodo para la animacion
-    void dragon(QPainter *canvas, int limInferior); // representa a main en consola
-    void generarDragon(QPainter *canvas); //
+    Dragon *dragonFractal;
 
-    Graficos *linea;
+    // =============== Dragon =============== //
 
-    QTimer *timer;
-    int limInferior, limSuperior; // Controlar los limites del dibujo del dragon
-    bool flag;
-   // =============== Dragon =============== //
+
 
     // =============== Henon =============== //
 
