@@ -11,6 +11,7 @@
 #include <QKeyEvent>
 
 #include "graficos.h"
+#include "henon.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -35,7 +36,7 @@ private slots:
 
 private:
     Ui::Dialog *ui;
-
+    // =============== Dragon =============== //
     int ejeX [4098];
     int ejeY [4098];
 
@@ -49,12 +50,22 @@ private:
     void dragon(QPainter *canvas, int limInferior); // representa a main en consola
     void generarDragon(QPainter *canvas); //
 
-    Graficos *linea;
-
     QTimer *timer;
 
     int limInferior, limSuperior; // Controlar los limites del dibujo del dragon
     bool flag;
+    // =============== Dragon =============== //
+
+    Graficos *linea;
+
+
+
+    // =============== Henon =============== //
+
+    Henon *henonFractal;
+
+    // =============== Henon =============== //
+
 };
 
 #endif // DIALOG_H

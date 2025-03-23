@@ -10,12 +10,14 @@ CONFIG += c++17
 
 SOURCES += \
     graficos.cpp \
+    henon.cpp \
     main.cpp \
     dialog.cpp
 
 HEADERS += \
     dialog.h \
-    graficos.h
+    graficos.h \
+    henon.h
 
 FORMS += \
     dialog.ui
