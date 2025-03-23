@@ -13,17 +13,20 @@ Dialog::Dialog(QWidget *parent)
     flag = 1;
     timer = new QTimer();
 
+    // Fractal de Henon
+    henonFractal = new Henon();
+
     connect(timer,  SIGNAL(timeout()),
             this,   SLOT(repaint()));
 }
 
-Dialog::~Dialog()
-{
+Dialog::~Dialog() {
+    delete henonFractal;
     delete ui;
 }
 
 void Dialog::on_pushBtnSalir_clicked() {
-
+    this->close();
 }
 
 void Dialog::paintEvent(QPaintEvent *event) {
@@ -49,6 +52,7 @@ void Dialog::paintEvent(QPaintEvent *event) {
         }
     }
 
+    henonFractal->generarHenon(canvas);
 }
 
 void Dialog::dragon() {  // representar a main
@@ -171,15 +175,7 @@ void Dialog::generarDragon(QPainter *canvas) {
 
 
 
-void Dialog::on_pushBtnIniciar_clicked() {
+void Dialog::on_pushBtnIniciar_clicked() {    timer->start(100);    }
 
-    timer->start(100);
-
-}
-
-
-void Dialog::on_pushBtnDetener_clicked()
-{
-    timer->stop();
-}
+void Dialog::on_pushBtnDetener_clicked() {  timer->stop();      }
 
