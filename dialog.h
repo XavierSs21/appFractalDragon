@@ -36,7 +36,8 @@ private slots:
 
 private:
     Ui::Dialog *ui;
-    // =============== Dragon =============== //
+   // =============== Dragon =============== //
+
     int ejeX [4098];
     int ejeY [4098];
 
@@ -50,15 +51,12 @@ private:
     void dragon(QPainter *canvas, int limInferior); // representa a main en consola
     void generarDragon(QPainter *canvas); //
 
-    QTimer *timer;
-
-    int limInferior, limSuperior; // Controlar los limites del dibujo del dragon
-    bool flag;
-    // =============== Dragon =============== //
-
     Graficos *linea;
 
-
+    QTimer *timer;
+    int limInferior, limSuperior; // Controlar los limites del dibujo del dragon
+    bool flag;
+   // =============== Dragon =============== //
 
     // =============== Henon =============== //
 
