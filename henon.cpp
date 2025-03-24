@@ -1,9 +1,21 @@
 #include "henon.h"
 
-Henon::Henon() {
+Henon::Henon(QObject *parent) : QObject(parent) {
 
     lastX = newX = lastY = newY = 0.1;
+
+    escalaX = escalaY = 1;
+    despX = despY = 0;
+
+    iteracionActual = 0;
+    iteracionMaxima = 15;
+
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateAnimation()));
+
 }
+
+Henon::~Henon(){ }
 
 
 void Henon::dibujar(QPainter *canvas) {
@@ -26,7 +38,7 @@ void Henon::dibujar(QPainter *canvas) {
     canvas->setFont(QFont("Ebrima", 22));
     canvas->drawText(10, 40, "Confinador de Henon");
 
-    for(int i = 1; i <= 15; i++){
+    for(int i = 1; i <= iteracionActual; i++){
         for(int j = 1; j <= 0x2FF; j++){
             newX = lastY + 1 - ( 1.4 * pow(lastX, 2) );
             newY = 0.3 * lastX;
@@ -55,4 +67,22 @@ void Henon::generarHenon(QPainter *canvas) {
     despY = 0;
     dibujar(canvas);
 
+}
+
+void Henon::startAnimation() {
+    timer->start(100);
+}
+
+void Henon::stopAnimation() {
+    timer->stop();
+}
+
+void Henon::updateAnimation() {
+    if (iteracionActual < iteracionMaxima) {
+        iteracionActual++;
+    } else {
+        iteracionActual = 0;
+        lastX = lastY = newX = newY = 0.1;
+    }
+    emit updateNeeded();
 }

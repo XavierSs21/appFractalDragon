@@ -1,19 +1,37 @@
 #ifndef HENON_H
 #define HENON_H
-#include <QPainter>
 
-class Henon
+#include <QObject>
+#include <QPainter>
+#include <QTimer>
+
+class Henon : public QObject
 {
+    Q_OBJECT
 public:
-    Henon();
+    explicit Henon(QObject *parent = nullptr);
+    ~Henon();
+
+    QTimer *timer;
 
     double escalaX, escalaY, despX, despY;
     double lastX, newX, lastY, newY;
 
-    QPainter *canvas;
-
     void dibujar(QPainter *canvas);
     void generarHenon(QPainter *painter);
+
+    // Animacion del fractal
+    int iteracionActual;
+    int iteracionMaxima;
+
+    void startAnimation();
+    void stopAnimation();
+
+signals:
+    void updateNeeded();
+
+public slots:
+    void updateAnimation();
 
 };
 
