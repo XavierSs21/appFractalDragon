@@ -3,14 +3,6 @@
 malthus::malthus(QObject *parent)
     : QObject{parent}
 {
-    PobAnt = PobNueva = x = y = 0.0;
-    Razon = 2.3;
-
-    pasosActuales = 0;
-    pasosMaximos = 15;
-
-    escalaFactor = 1.0;
-    expandiendo = true;
 
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateAnimation()));;
@@ -27,12 +19,14 @@ void malthus::dibujar(QPainter *canvas) {
     QFont fuente = canvas->font();
     fuente.setPointSize(fuente.pointSize() * 2);
     canvas->setFont(QFont("Ebrima", 22));
+
+    canvas->setPen(QColor(155,75,75));
     canvas->drawText(10, 40, "Flujo maltusiano");
 
     int contador = 0;
 
-    for(int i = 1; i <= pasosActuales; i++) {
-        for(int j = 1; j <= 10; j++) {
+    for (int i = 1; i <= pasosActuales; i++) {
+        for (int j = 1; j <= 10; j++) {
             Razon += 0.01;
             PobAnt = 0.01;
 
@@ -67,8 +61,19 @@ void malthus::generarMalthus(QPainter *canvas) {
     dibujar(canvas);
 }
 
-void malthus::startAnimation() {
+void malthus::inicializar() {
+    PobAnt = PobNueva = x = y = 0.0;
+    Razon = 2.3;
+
     pasosActuales = 0;
+    pasosMaximos = 15;
+
+    escalaFactor = 1.0;
+    expandiendo = true;
+}
+
+void malthus::startAnimation() {
+    inicializar();
     timer->start(200);
 }
 
@@ -79,21 +84,20 @@ void malthus::stopAnimation() {
 void malthus::updateAnimation() {
 
     // Efecto de respiración
-    if (expandiendo) {
+    if(expandiendo) {
         escalaFactor += 0.01;
-        if (escalaFactor >= 1.2)
+        if(pasosActuales < pasosMaximos)
+            pasosActuales++;
+        if(escalaFactor >= 1.2)
             expandiendo = false;
     } else {
         escalaFactor -= 0.01;
-        if (escalaFactor <= 0.8)
-            expandiendo = true;
+        if(pasosActuales > 0)
+            pasosActuales--;
+        // Al llegar al límite inferior se reinicia todo el ciclo
+        if(escalaFactor <= 0.8) {
+            inicializar();
+        }
     }
-
-    if (pasosActuales < pasosMaximos) {
-        pasosActuales++;
-    } else {
-        pasosActuales = 0;
-    }
-
     emit updateNeeded();
 }
