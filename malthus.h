@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QPainter>
+#include <QTimer>
 
 class malthus : public QObject
 {
@@ -15,6 +16,26 @@ public:
 
     void dibujar(QPainter *canvas);
     void generarMalthus(QPainter *canvas);
+
+    // Animacion del fractal
+    QTimer *timer;
+
+    void inicializar();
+
+    int pasosActuales;
+    int pasosMaximos;
+
+    double escalaFactor;
+    bool expandiendo;
+
+    void startAnimation();
+    void stopAnimation();
+
+signals:
+    void updateNeeded();
+
+public slots:
+    void updateAnimation();
 
 signals:
 };
