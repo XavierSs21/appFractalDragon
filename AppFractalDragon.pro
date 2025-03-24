@@ -13,13 +13,15 @@ SOURCES += \
     graficos.cpp \
     henon.cpp \
     main.cpp \
-    dialog.cpp
+    dialog.cpp \
+    malthus.cpp
 
 HEADERS += \
     dialog.h \
     dragon.h \
     graficos.h \
-    henon.h
+    henon.h \
+    malthus.h
 
 FORMS += \
     dialog.ui
