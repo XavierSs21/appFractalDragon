@@ -8,12 +8,15 @@ malthus::malthus(QObject *parent)
     x = y = 0;
 }
 
+malthus::~malthus() { }
+
 void malthus::dibujar(QPainter *canvas) {
 
     const int width = canvas->window().width();
     const int height = canvas->window().height();
 
     QFont fuente = canvas->font();
+    canvas->setPen(QColor(42,144,55));
 
     fuente.setPointSize(fuente.pointSize() * 2); // -> agrgar un size a la letra
     canvas->setFont(QFont("Ebrima", 22));
@@ -36,10 +39,12 @@ void malthus::dibujar(QPainter *canvas) {
                 PobNueva = Razon * ( PobAnt * ( 1 - PobAnt ) );
                 x = PobNueva - PobAnt;
 
-                const auto & newX = static_cast<int>((x * width / 2) + width / 2);
-                const auto & newY = static_cast<int>((height / 2) - (y * height / 2));
+                const auto & newX = static_cast<int>((x * width / 4) + width / 2);
+                const auto & newY = static_cast<int>((height / 2) - (y * height / 4));
 
-                canvas->drawPoint( newX, newY );
+                // Evitar que se salga del area pintada
+                // if (newX >= 0 && newX < width && newY >= 0 && newY < height)
+                    canvas->drawPoint(newX, newY);
 
                 if( std::abs(PobAnt - PobNueva) < 1e-6 ) // Evitar falsos positivos
                     contador++;

@@ -11,9 +11,11 @@ Dialog::Dialog(QWidget *parent)
     dragonFractal = new Dragon(this);
     connect(dragonFractal, SIGNAL(updateNeeded()), this, SLOT(update()));
 
-
     // Fractal de Henon
     henonFractal = new Henon();
+
+    // Fractal de Malthus
+    malthusFractal = new malthus();
 
 }
 
@@ -21,6 +23,7 @@ Dialog::~Dialog() {
 
     delete dragonFractal;
     delete henonFractal;
+    delete malthusFractal;
     delete ui;
 }
 
@@ -34,8 +37,12 @@ void Dialog::paintEvent(QPaintEvent *event) {
 
     QPainter *canvas = new QPainter(this);
 
-    dragonFractal->dragon(canvas, dragonFractal->limInferior);
-    henonFractal->generarHenon(canvas);
+    // dragonFractal->dragon(canvas, dragonFractal->limInferior);
+    // henonFractal->generarHenon(canvas);
+
+    malthusFractal->generarMalthus(canvas);
+
+    canvas->end();
 }
 
 
