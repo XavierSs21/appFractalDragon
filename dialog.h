@@ -11,6 +11,7 @@
 #include "dragon.h"
 #include "henon.h"
 #include "malthus.h"
+#include "mandel.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -57,6 +58,12 @@ private:
     malthus *malthusFractal;
 
     // =============== Malthus =============== //
+
+    // =============== Mandel =============== //
+
+    Mandel *mandelFractal;
+
+    // =============== Mandel =============== //
 
 };
 
