@@ -17,6 +17,8 @@ Dialog::Dialog(QWidget *parent)
 
     // Fractal de Malthus
     malthusFractal = new malthus();
+    connect(malthusFractal, SIGNAL(updateNeeded()), this, SLOT(update()));
+
 
     // Fractal de Mandel
     mandelFractal = new Mandel();
@@ -43,9 +45,8 @@ void Dialog::paintEvent(QPaintEvent *event) {
     QPainter *canvas = new QPainter(this);
 
     // dragonFractal->dragon(canvas, dragonFractal->limInferior);
-    henonFractal->generarHenon(canvas);
-
-    // malthusFractal->generarMalthus(canvas);
+    // henonFractal->generarHenon(canvas);
+    malthusFractal->generarMalthus(canvas);
     // mandelFractal->dibujar(canvas);
 
     canvas->end();
@@ -54,11 +55,15 @@ void Dialog::paintEvent(QPaintEvent *event) {
 
 void Dialog::on_pushBtnIniciar_clicked() {
     // dragonFractal->startAnimation();
-    henonFractal->startAnimation();
+    // henonFractal->startAnimation();
+    malthusFractal->startAnimation();
+
 }
 
 void Dialog::on_pushBtnDetener_clicked() {
     // dragonFractal->stopAnimation();
-    henonFractal->stopAnimation();
+    // henonFractal->stopAnimation();
+    malthusFractal->stopAnimation();
+
 }
 
