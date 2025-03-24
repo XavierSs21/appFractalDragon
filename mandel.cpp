@@ -42,8 +42,12 @@ void Mandel::dibujar(QPainter *canvas) {
             }
 
             if (Steps < Limite) {
-                int intensidad = static_cast<int>(255.0 * Steps / Limite);
-                canvas->setPen(QColor::fromRgb(intensidad, intensidad, intensidad));
+                int hue = (360- (Steps * 20) % 360); // Colores inversos para efecto galaxia
+                int saturation = 200 + (Steps * 5 % 55); // Satura más cerca del límite
+                int value = 150 + (Steps * 3 % 105); // Brillos suaves pero intensos
+
+                QColor color = QColor::fromHsv(hue, saturation, value);
+                canvas->setPen(color);
                 canvas->drawPoint(i, j);
             }
         }
