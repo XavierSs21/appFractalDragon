@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="pushBtnSalir">
    <property name="geometry">
     <rect>
-     <x>650</x>
-     <y>550</y>
+     <x>350</x>
+     <y>450</y>
      <width>131</width>
      <height>31</height>
     </rect>
@@ -29,8 +29,8 @@
   <widget class="QPushButton" name="pushBtnIniciar">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>460</y>
+     <x>30</x>
+     <y>450</y>
      <width>83</width>
      <height>29</height>
     </rect>
@@ -42,8 +42,8 @@
   <widget class="QPushButton" name="pushBtnDetener">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>460</y>
+     <x>130</x>
+     <y>450</y>
      <width>83</width>
      <height>29</height>
     </rect>
