@@ -20,6 +20,8 @@ public:
     // Animacion del fractal
     QTimer *timer;
 
+    void inicializar();
+
     int pasosActuales;
     int pasosMaximos;
 

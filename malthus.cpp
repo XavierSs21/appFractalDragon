@@ -3,7 +3,6 @@
 malthus::malthus(QObject *parent)
     : QObject{parent}
 {
-
     PobAnt = PobNueva = x = y = 0.0;
     Razon = 2.3;
 
@@ -14,27 +13,25 @@ malthus::malthus(QObject *parent)
     expandiendo = true;
 
     timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(updateAnimation()));;
-
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateAnimation()));
 }
 
 malthus::~malthus() { }
 
 void malthus::dibujar(QPainter *canvas) {
-
     const int width = canvas->window().width();
     const int height = canvas->window().height();
 
     QFont fuente = canvas->font();
-
+  
     fuente.setPointSize(fuente.pointSize() * 2);
     canvas->setFont(QFont("Ebrima", 22));
-
+  
     canvas->setPen(QColor(155,75,75));
     canvas->drawText(10, 40, "Flujo maltusiano");
 
     for (int i = 1; i <= pasosActuales; i++) {
-
+      
         for (int j = 1; j <= 10; j++) {
             y = 0.0;
             int contador = 0;
@@ -73,10 +70,9 @@ void malthus::generarMalthus(QPainter *canvas) {
     dibujar(canvas);
 }
 
-
 void malthus::startAnimation() {
     pasosActuales = 0;
-    timer->start(150);
+    timer->start(150);  // Puedes ajustar este valor si quieres más suavidad
 }
 
 void malthus::stopAnimation() {
@@ -84,22 +80,22 @@ void malthus::stopAnimation() {
 }
 
 void malthus::updateAnimation() {
-
-    // Efecto de respiración
-    if(expandiendo) {
+    if (expandiendo) {
         escalaFactor += 0.01;
-        if(pasosActuales < pasosMaximos)
+        if (pasosActuales < pasosMaximos)
             pasosActuales++;
-        if(escalaFactor >= 1.2)
+        if (escalaFactor >= 1.2)
             expandiendo = false;
     } else {
         escalaFactor -= 0.01;
-        if(pasosActuales > 1)
+        if (pasosActuales > 1)
             pasosActuales--;
         else
             expandiendo = true;
-        if(escalaFactor <= 0.8)
+
+        if (escalaFactor <= 0.8)
             expandiendo = true;
     }
+
     emit updateNeeded();
 }
