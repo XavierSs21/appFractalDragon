@@ -44,9 +44,9 @@ void Dialog::paintEvent(QPaintEvent *event) {
 
     QPainter *canvas = new QPainter(this);
 
-    // dragonFractal->dragon(canvas, dragonFractal->limInferior);
-    // henonFractal->generarHenon(canvas);
-    // malthusFractal->generarMalthus(canvas);
+    dragonFractal->dragon(canvas, dragonFractal->limInferior);
+    henonFractal->generarHenon(canvas);
+    malthusFractal->generarMalthus(canvas);
     mandelFractal->dibujar(canvas);
 
     canvas->end();
@@ -54,15 +54,15 @@ void Dialog::paintEvent(QPaintEvent *event) {
 
 
 void Dialog::on_pushBtnIniciar_clicked() {
-    // dragonFractal->startAnimation();
-    // henonFractal->startAnimation();
-    // malthusFractal->startAnimation();
+    dragonFractal->startAnimation();
+    henonFractal->startAnimation();
+    malthusFractal->startAnimation();
 }
 
 void Dialog::on_pushBtnDetener_clicked() {
-    // dragonFractal->stopAnimation();
-    // henonFractal->stopAnimation();
-    // malthusFractal->stopAnimation();
+    dragonFractal->stopAnimation();
+    henonFractal->stopAnimation();
+    malthusFractal->stopAnimation();
 
 }
 
