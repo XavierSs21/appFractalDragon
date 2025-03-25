@@ -6,6 +6,10 @@ Dialog::Dialog(QWidget *parent)
     , ui(new Ui::Dialog)
 {
     ui->setupUi(this);
+    ui->pushBtnIniciar->setEnabled(false);
+
+    connect(ui->comboBoxFractal, SIGNAL(currentIndexChanged(int)),
+            this, SLOT(validarSeleccionFractal()));
 
     // Fractal de Dragon / Arabesco
     dragonFractal = new Dragon(this);
@@ -44,10 +48,22 @@ void Dialog::paintEvent(QPaintEvent *event) {
 
     QPainter *canvas = new QPainter(this);
 
-    dragonFractal->dragon(canvas, dragonFractal->limInferior);
-    henonFractal->generarHenon(canvas);
-    malthusFractal->generarMalthus(canvas);
-    mandelFractal->dibujar(canvas);
+    int index = ui->comboBoxFractal->currentIndex();
+
+    switch (index) {
+    case 1:  // Dragon
+        dragonFractal->dragon(canvas, dragonFractal->limInferior);
+        break;
+    case 2:  // Henon
+        henonFractal->generarHenon(canvas);
+        break;
+    case 3:  // Malthus
+        malthusFractal->generarMalthus(canvas);
+        break;
+    case 4:  // Mandel
+        mandelFractal->dibujar(canvas);
+        break;
+    }
 
     canvas->end();
 }
@@ -64,5 +80,10 @@ void Dialog::on_pushBtnDetener_clicked() {
     henonFractal->stopAnimation();
     malthusFractal->stopAnimation();
 
+}
+
+void Dialog::validarSeleccionFractal() {
+    int index = ui->comboBoxFractal->currentIndex();
+    ui->pushBtnIniciar->setEnabled(index != 0);
 }
 

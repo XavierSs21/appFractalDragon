@@ -13,44 +13,75 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="pushBtnSalir">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>10</x>
      <y>450</y>
-     <width>131</width>
-     <height>31</height>
+     <width>471</width>
+     <height>35</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Salir</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushBtnIniciar">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>450</y>
-     <width>83</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Iniciar</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushBtnDetener">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>450</y>
-     <width>83</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Detener</string>
-   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="QComboBox" name="comboBoxFractal">
+      <item>
+       <property name="text">
+        <string>Elegir...</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Arabesco</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Curva de Henon</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Malthus</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Mandelbrot</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <layout class="QFormLayout" name="formLayout">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pushBtnIniciar">
+          <property name="text">
+           <string>Iniciar</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pushBtnDetener">
+          <property name="text">
+           <string>Detener</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="pushBtnSalir">
+        <property name="text">
+         <string>Salir</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
