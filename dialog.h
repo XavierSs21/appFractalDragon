@@ -34,6 +34,8 @@ private slots:
 
     void on_pushBtnDetener_clicked();
 
+    void validarSeleccionFractal();
+
 private:
     Ui::Dialog *ui;
 
